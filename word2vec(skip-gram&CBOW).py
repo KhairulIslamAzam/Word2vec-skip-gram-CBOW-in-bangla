@@ -101,38 +101,6 @@ unique_word_len = len(word_dict) +1
 file_name = 'sentiment_word2vec.txt'
 model_1.wv.save_word2vec_format(file_name, binary = False)
 
-
-import os
-
-embedding_index = {}
-cof = []
-wordddd = []
-va_linessss = []
-f = open(os.path.join('', 'sentiment_word2vec.txt'), encoding = "utf-8")
-
-for line in f:
-    values = line.split()
-    va_linessss.append(values)
-    word = values[0]
-    wordddd.append(word)
-    coefs = np.asarray(values[1:])
-    cof.append(coefs)
-    embedding_index[word] = coefs
-f.close()
-
-#embedding_index = np.array(embedding_index, dtype = float)
-
-
-#for word, i embedding_index.items()
-embedding_matrix = np.zeros((unique_word_len, 100))
-
-for word, i in word_dict.items():
-    if i > unique_word_len:
-        continue
-    embedding_vector = embedding_index.get(word)
-    if embedding_vector is not None:
-        embedding_matrix[i] = embedding_vector
-
 #model save
 #model_1.wv.save_word2vec_format('model_1.bin')
 
